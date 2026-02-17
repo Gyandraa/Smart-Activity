@@ -6,7 +6,7 @@
 - dapat menghapus taks
 - dapat mengedit task
 
-on progress
+## on progress
 
 - deadline task
 - search task
