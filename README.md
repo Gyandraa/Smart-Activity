@@ -6,8 +6,13 @@
 - dapat menghapus taks
 - dapat mengedit task
 
-## on progress
+## On progress
 
 - deadline task
 - search task
 - ubah halaman untuk form pengisian task dan isi list task
+
+## What can do Smart Activity
+
+- dapat membantu anda untuk mengatur tugas anda
+- dapat menentukan prioritas tugas anda yang sedang mepet dengan deadline
