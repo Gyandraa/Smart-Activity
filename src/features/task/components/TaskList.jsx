@@ -1,3 +1,4 @@
+import Button from "../../../shared/components/button";
 export default function TaskList({ tasks, removeTask, startEdit }) {
   return (
     <ul className="mt-5">
@@ -6,14 +7,6 @@ export default function TaskList({ tasks, removeTask, startEdit }) {
           <div className="text-center">
             <h3>Task: {task.task}</h3>
             <p>Description: {task.description}</p>
-            <button
-              onClick={() => removeTask(task.id)}
-              className="px-4 py-2 ml-5 bg-green-600 text-white font-semibold
-      rounded-lg shadow-md hover:bg-green-700 focus:outline-none focus:ring-2
-      focus:ring-green-500 focus:ring-opacity-75"
-            >
-              Delete
-            </button>
             <button
               onClick={() => startEdit(task.id)}
               className="px-4 py-2 ml-5 bg-red-600 text-white font-semibold
