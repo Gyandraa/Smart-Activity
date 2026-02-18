@@ -21,6 +21,8 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
       updatedTask(newTask, newDescription);
     } else {
       addTask(newTask, newDescription);
+      setNewTask("");
+      setNewDescription("");
     }
   };
 
