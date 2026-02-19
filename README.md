@@ -5,10 +5,12 @@
 - dapat menambahkan task baru
 - dapat menghapus taks
 - dapat mengedit task
+- dapat menambah date untuk deadline
 
 ## On progress
 
-- deadline task
+- deadline status
+- priority deadline by status
 - search task
 - ubah halaman untuk form pengisian task dan isi list task
 
