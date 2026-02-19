@@ -7,6 +7,9 @@ export default function TaskList({ tasks, removeTask, startEdit }) {
             <h3>Task: {task.task}</h3>
             <p>Description: {task.description}</p>
             <p>Deadline : {task.deadline}</p>
+            <p>Task Priority : {task.importance} </p>
+            <p>Time Remaining : {}</p>
+            <p>Urgency : {}</p>
             <button
               onClick={() => removeTask(task.id)}
               className="px-4 py-2 ml-5 bg-red-600 text-white font-semibold rounded-lg
