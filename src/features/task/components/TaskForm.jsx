@@ -5,37 +5,35 @@ import "react-datepicker/dist/react-datepicker.css";
 export default function TaskForm({ addTask, editingTask, updatedTask }) {
   const [newTask, setNewTask] = useState("");
   const [newDescription, setNewDescription] = useState("");
-  const [deadline, setDeadline] = useState("");
+  const [newDeadline, setNewDeadline] = useState("YYYY-MM-DD");
 
   useEffect(() => {
     if (editingTask) {
       setNewTask(editingTask.task);
       setNewDescription(editingTask.description);
+      setNewDeadline(editingTask.deadline);
     } else {
       setNewTask("");
       setNewDescription("");
+      setNewDeadline("");
     }
   }, [editingTask]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newTask || !newDescription) {
-      return alert("Please enter task and description");
+    if (!newTask || !newDescription || !newDeadline) {
+      return alert("Please enter task, description and deadline");
     }
 
     if (editingTask) {
-      updatedTask(newTask, newDescription);
+      updatedTask(newTask, newDescription, newDeadline);
     } else {
-      addTask(newTask, newDescription);
-
+      addTask(newTask, newDescription, newDeadline);
       setNewTask("");
       setNewDescription("");
+      setNewDeadline("");
     }
-  };
-
-  const handleDeadlineChange = (date) => {
-    setDeadline(date);
   };
 
   return (
@@ -57,15 +55,16 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
           value={newDescription}
           onChange={(e) => setNewDescription(e.target.value)}
         />
-        <div>
-          <DatePicker
-            selected={deadline}
-            onChange={handleDeadlineChange}
-            dateFormat="MM/DD/YYYY"
-            placeholderText="Select deadline"
-            className="mb-4 mt-5 px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 ease-in-out"
-          />
-        </div>
+
+        <input
+          className="w-50 px-4 py-2 ml-3 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 ease-in-out"
+          type="date"
+          name="deadline"
+          placeholder="new deadline"
+          value={newDeadline}
+          onChange={(e) => setNewDeadline(e.target.value)}
+        />
+
         <button
           type="submit"
           className="px-4 py-2 ml-5 bg-indigo-600 text-white font-semibold
