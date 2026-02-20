@@ -9,8 +9,8 @@
 
 ## On progress
 
-- deadline status
-- priority deadline by status
+- time remaining deadline (✅)
+- final priority from accumulation by deadline and importance (✅)
 - search task
 - ubah halaman untuk form pengisian task dan isi list task
 
