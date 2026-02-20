@@ -34,7 +34,13 @@ export default function useTask() {
   function addTask(task, notes, deadline, importance) {
     setTasks((prev) => [
       ...prev,
-      { id: Date.now(), task, notes, deadline, importance },
+      {
+        id: Date.now(),
+        task,
+        notes,
+        deadline,
+        importance,
+      },
     ]);
   }
 

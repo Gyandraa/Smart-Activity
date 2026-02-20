@@ -14,7 +14,8 @@ export default function CalculatePriority(userPriority, deadline) {
     overdue: 3,
   };
 
-  const userLevel = priorityLevel[userPriority];
+  const userLevel = priorityLevel[userPriority] ?? 1;
+
   const deadlineLevel = deadlinePriority[deadlineStatus];
 
   const result = Math.max(userLevel, deadlineLevel);

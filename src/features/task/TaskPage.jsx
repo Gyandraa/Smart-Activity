@@ -1,8 +1,10 @@
 import useTask from "./hooks/useTask";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
+import useTaskFilter from "./hooks/useTaskFilter";
 export default function TaskPage() {
   const taskManager = useTask();
+  const filteredTasks = useTaskFilter(taskManager.tasks);
 
   return (
     <div>
@@ -15,7 +17,7 @@ export default function TaskPage() {
       />
 
       <TaskList
-        tasks={taskManager.tasks}
+        tasks={filteredTasks}
         removeTask={taskManager.removeTask}
         startEdit={taskManager.startEdit}
       />

@@ -3,40 +3,40 @@ import { useEffect, useState } from "react";
 export default function TaskForm({ addTask, editingTask, updatedTask }) {
   const [newTask, setNewTask] = useState("");
   const [newNotes, setNewNotes] = useState("");
-  const [newDeadline, setNewDeadline] = useState("YYYY-MM-DD");
+  const [newDeadline, setNewDeadline] = useState("");
   const [newImportance, setNewImportance] = useState(null);
-
-  const IMPORTANCE = ["Low", "Medium", "High"];
 
   useEffect(() => {
     if (editingTask) {
       setNewTask(editingTask.task);
-      setNewNotes(editingTask.notes);
+      setNewNotes(editingTask.notes ?? "");
       setNewDeadline(editingTask.deadline);
-      setNewImportance(editingTask.importance);
+      setNewImportance(editingTask.importance ?? null);
     } else {
       setNewTask("");
       setNewNotes("");
       setNewDeadline("");
-      setNewImportance("");
+      setNewImportance(null);
     }
   }, [editingTask]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newTask || !newDeadline) {
+    const cleanNotes = newNotes.trim() || null;
+
+    if (!newTask.trim() || !newDeadline) {
       return alert("Please enter task and deadline ");
     }
 
     if (editingTask) {
-      updatedTask(newTask, newNotes, newDeadline, newImportance);
+      updatedTask(newTask, cleanNotes, newDeadline, newImportance);
     } else {
-      addTask(newTask, newNotes, newDeadline, newImportance);
+      addTask(newTask, cleanNotes, newDeadline, newImportance);
       setNewTask("");
       setNewNotes("");
       setNewDeadline("");
-      setNewImportance("");
+      setNewImportance(null);
     }
   };
 
@@ -68,6 +68,18 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
           value={newDeadline}
           onChange={(e) => setNewDeadline(e.target.value)}
         />
+
+        <label>
+          <input
+            type="radio"
+            name="importance"
+            value="Auto"
+            checked={newImportance === null}
+            onChange={() => setNewImportance(null)}
+          />
+          No preference
+        </label>
+
         <label>
           <input
             type="radio"
