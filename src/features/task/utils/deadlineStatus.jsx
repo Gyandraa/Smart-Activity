@@ -11,10 +11,10 @@ export default function DeadlineStatus(deadline) {
   const daysDif = timeDif / (1000 * 3600 * 24);
 
   if (daysDif < 0) {
-    return "overdue";
+    return "Overdue";
   } else if (daysDif <= 3) {
-    return "warning";
+    return "Warning";
   } else {
-    return "safe";
+    return "Safe";
   }
 }

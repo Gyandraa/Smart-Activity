@@ -20,6 +20,13 @@ export default function useTaskFilter(tasks) {
       ...task,
       urgency: DeadlineStatus(task.deadline),
       finalPriority: CalculatePriority(userPriority, task.deadline),
+      timeRemaining:
+        Math.max(
+          0,
+          Math.ceil(
+            (new Date(task.deadline) - new Date()) / (1000 * 3600 * 24),
+          ),
+        ) + " days",
     };
   });
 }

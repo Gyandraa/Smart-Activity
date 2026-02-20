@@ -3,15 +3,15 @@ export default function CalculatePriority(userPriority, deadline) {
   const deadlineStatus = DeadlineStatus(deadline);
 
   const priorityLevel = {
-    low: 1,
-    medium: 2,
-    high: 3,
+    Low: 1,
+    Medium: 2,
+    High: 3,
   };
 
   const deadlinePriority = {
-    safe: 1,
-    warning: 2,
-    overdue: 3,
+    Safe: 1,
+    Warning: 2,
+    Overdue: 3,
   };
 
   const userLevel = priorityLevel[userPriority] ?? 1;
@@ -21,9 +21,9 @@ export default function CalculatePriority(userPriority, deadline) {
   const result = Math.max(userLevel, deadlineLevel);
 
   const levelToPriority = {
-    1: "low",
-    2: "medium",
-    3: "high",
+    1: "Low",
+    2: "Medium",
+    3: "High",
   };
 
   return levelToPriority[result];
