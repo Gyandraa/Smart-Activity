@@ -2,19 +2,21 @@ import { useEffect, useState } from "react";
 
 export default function TaskForm({ addTask, editingTask, updatedTask }) {
   const [newTask, setNewTask] = useState("");
-  const [newDescription, setNewDescription] = useState("");
+  const [newNotes, setNewNotes] = useState("");
   const [newDeadline, setNewDeadline] = useState("YYYY-MM-DD");
-  const [newImportance, setNewImportance] = useState("");
+  const [newImportance, setNewImportance] = useState(null);
+
+  const IMPORTANCE = ["Low", "Medium", "High"];
 
   useEffect(() => {
     if (editingTask) {
       setNewTask(editingTask.task);
-      setNewDescription(editingTask.description);
+      setNewNotes(editingTask.notes);
       setNewDeadline(editingTask.deadline);
-      setNewImportance(editingTask.priority);
+      setNewImportance(editingTask.importance);
     } else {
       setNewTask("");
-      setNewDescription("");
+      setNewNotes("");
       setNewDeadline("");
       setNewImportance("");
     }
@@ -23,16 +25,16 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!newTask || !newDescription || !newDeadline || !newImportance) {
-      return alert("Please enter task, description , deadline and importance");
+    if (!newTask || !newDeadline) {
+      return alert("Please enter task and deadline ");
     }
 
     if (editingTask) {
-      updatedTask(newTask, newDescription, newDeadline, newImportance);
+      updatedTask(newTask, newNotes, newDeadline, newImportance);
     } else {
-      addTask(newTask, newDescription, newDeadline, newImportance);
+      addTask(newTask, newNotes, newDeadline, newImportance);
       setNewTask("");
-      setNewDescription("");
+      setNewNotes("");
       setNewDeadline("");
       setNewImportance("");
     }
@@ -52,10 +54,10 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
         <input
           className="w-50 px-4 py-2 ml-3 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300 ease-in-out"
           type="text"
-          name="description"
-          placeholder="Description"
-          value={newDescription}
-          onChange={(e) => setNewDescription(e.target.value)}
+          name="notes"
+          placeholder="Notes (opsional)"
+          value={newNotes}
+          onChange={(e) => setNewNotes(e.target.value)}
         />
 
         <input
