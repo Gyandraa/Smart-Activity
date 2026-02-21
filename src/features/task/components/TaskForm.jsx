@@ -40,11 +40,10 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
 
     navigate("/");
   };
-
   return (
-    <form onSubmit={handleSubmit} className="text-center mt-5">
+    <form onSubmit={handleSubmit} className="text-center mt-6 px-4">
       <input
-        className="w-50 px-4 py-2 border rounded-md"
+        className="w-full px-5 py-4 mb-4 border rounded-lg text-xl"
         type="text"
         placeholder="Task"
         value={newTask}
@@ -52,7 +51,7 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
       />
 
       <input
-        className="w-50 px-4 py-2 ml-3 border rounded-md"
+        className="w-full px-5 py-4 mb-4 border rounded-lg text-xl"
         type="text"
         placeholder="Notes (opsional)"
         value={newNotes}
@@ -60,63 +59,67 @@ export default function TaskForm({ addTask, editingTask, updatedTask }) {
       />
 
       <input
-        className="w-50 px-4 py-2 ml-3 border rounded-md"
+        className="w-full px-5 py-4 mb-4 border rounded-lg text-xl"
         type="date"
         value={newDeadline}
         onChange={(e) => setNewDeadline(e.target.value)}
       />
 
-      <div className="mt-3">
-        <label>
+      <div className="mt-4 flex flex-col space-y-3 text-xl">
+        <label className="flex items-center space-x-2">
           <input
             type="radio"
             name="importance"
             value="Auto"
             checked={newImportance === null}
             onChange={() => setNewImportance(null)}
+            className="w-6 h-6"
           />
-          No preference
+          <span>No preference</span>
         </label>
 
-        <label className="ml-3">
+        <label className="flex items-center space-x-2">
           <input
             type="radio"
             name="importance"
             value="Low"
             checked={newImportance === "Low"}
             onChange={(e) => setNewImportance(e.target.value)}
+            className="w-6 h-6"
           />
-          Low
+          <span>Low</span>
         </label>
 
-        <label className="ml-3">
+        <label className="flex items-center space-x-2">
           <input
             type="radio"
             name="importance"
             value="Medium"
             checked={newImportance === "Medium"}
             onChange={(e) => setNewImportance(e.target.value)}
+            className="w-6 h-6"
           />
-          Medium
+          <span>Medium</span>
         </label>
 
-        <label className="ml-3">
+        <label className="flex items-center space-x-2">
           <input
             type="radio"
             name="importance"
             value="High"
             checked={newImportance === "High"}
             onChange={(e) => setNewImportance(e.target.value)}
+            className="w-6 h-6"
           />
-          High
+          <span>High</span>
         </label>
       </div>
 
       <button
         type="submit"
-        className="px-4 py-2 ml-5 mt-5 bg-indigo-600 text-white font-semibold
-      rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2
-      focus:ring-indigo-500 focus:ring-opacity-75"
+        className="w-full px-6 py-4 mt-6 bg-indigo-600 text-white font-bold
+      rounded-xl shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2
+      focus:ring-indigo-500 focus:ring-opacity-75 text-xl"
       >
         {editingTask ? "Update" : "Add"}
       </button>
