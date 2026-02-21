@@ -29,7 +29,7 @@ export default function TaskList({ tasks, removeTask }) {
                 {task.task}
               </h3>
 
-              <p className="text-xl text-gray-600 mb-8 whitespace-pre-wrap leading-relaxed">
+              <p className="text-xl font-bold text-gray-600 mb-8 whitespace-pre-wrap leading-relaxed">
                 {task.notes || "No notes"}
               </p>
 
