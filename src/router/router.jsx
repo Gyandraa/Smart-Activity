@@ -6,6 +6,8 @@ export default function Router() {
     <Routes>
       <Route path="/" element={<TaskPage />} />
       <Route path="/task-form" element={<TaskFromPage />} />
+
+      <Route path="/task-form/:id" element={<TaskFromPage />} />
     </Routes>
   );
 }

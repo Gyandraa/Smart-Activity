@@ -1,31 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function useTask() {
-  const [tasks, setTasks] = useState([
-    {
-      id: 1,
-      task: "Get a new skilss in frontend enginer",
-      notes: "to improve my career and get a job for my self",
-      deadline: "2026-05-21",
-      importance: "Low",
-    },
-    {
-      id: 2,
-      task: "run 10km in every morning",
-      notes: "to improve body fitness",
-      deadline: "2026-02-23",
-      importance: "Low",
-    },
-    {
-      id: 3,
-      task: "read a book",
-      notes: "to improve knowledge",
-      deadline: "2026-02-20",
-      importance: "High",
-    },
-  ]);
+  const [tasks, setTasks] = useState(() => {
+    const data = localStorage.getItem("tasks");
+    return data ? JSON.parse(data) : [];
+  });
 
-  const [editingTask, setEditingTask] = useState(null);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+
+  function getTaskById(id) {
+    return tasks.find((task) => task.id === Number(id));
+  }
 
   function removeTask(id) {
     setTasks((prev) => prev.filter((task) => task.id !== id));
@@ -44,15 +31,10 @@ export default function useTask() {
     ]);
   }
 
-  function startEdit(id) {
-    const taskToEdit = tasks.find((task) => task.id === id);
-    setEditingTask(taskToEdit);
-  }
-
-  function updatedTask(newTask, newNotes, newDeadline, newImportance) {
+  function updatedTask(id, newTask, newNotes, newDeadline, newImportance) {
     setTasks((prev) =>
       prev.map((task) =>
-        task.id === editingTask.id
+        task.id === Number(id)
           ? {
               ...task,
               task: newTask,
@@ -63,15 +45,13 @@ export default function useTask() {
           : task,
       ),
     );
-    setEditingTask(null);
   }
 
   return {
     tasks,
     removeTask,
     addTask,
-    startEdit,
-    editingTask,
     updatedTask,
+    getTaskById,
   };
 }
