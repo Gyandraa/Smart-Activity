@@ -4,10 +4,10 @@ export default function useTask() {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      task: "wake up 6am in every morning",
-      notes: "for healthy life",
-      deadline: "2026-02-21",
-      importance: "Medium",
+      task: "Get a new skilss in frontend enginer",
+      notes: "to improve my career and get a job for my self",
+      deadline: "2026-05-21",
+      importance: "Low",
     },
     {
       id: 2,

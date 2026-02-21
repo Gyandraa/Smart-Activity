@@ -11,7 +11,8 @@
 
 - time remaining deadline (✅)
 - final priority from accumulation by deadline and importance (✅)
-- search task
+- progress task
+- sort task
 - ubah halaman untuk form pengisian task dan isi list task
 
 ## What can do Smart Activity
