@@ -7,15 +7,8 @@
 - dapat mengedit task
 - dapat menambah date untuk deadline
 
-## On progress
-
-- time remaining deadline (✅)
-- final priority from accumulation by deadline and importance (✅)
-- progress task
-- sort task
-- ubah halaman untuk form pengisian task dan isi list task
-
 ## What can do Smart Activity
 
 - dapat membantu anda untuk mengatur tugas anda
-- dapat menentukan prioritas tugas anda yang sedang mepet dengan deadline
+- dapat melihat priority final tugas anda yang memungkinkan anda dapat melihat tugas mana dulu yang penting
+- sudah responsife diseluruh device
