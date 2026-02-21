@@ -25,17 +25,14 @@ export default function TaskList({ tasks, removeTask }) {
                        p-10 border border-gray-100"
           >
             <div className="flex flex-col min-h-[550px]">
-              {/* Title */}
               <h3 className="text-4xl font-bold text-gray-800 mb-6 break-words leading-snug">
                 {task.task}
               </h3>
 
-              {/* Notes */}
               <p className="text-xl text-gray-600 mb-8 whitespace-pre-wrap leading-relaxed">
                 {task.notes || "No notes"}
               </p>
 
-              {/* Info Section */}
               <div className="space-y-3 text-lg text-gray-700 mb-8">
                 <p>
                   <span className="font-semibold">Deadline:</span>{" "}
@@ -54,7 +51,6 @@ export default function TaskList({ tasks, removeTask }) {
                 </p>
               </div>
 
-              {/* Priority Badge */}
               <div className="mb-8">
                 <span
                   className={`px-8 py-3 text-lg font-semibold rounded-full ${priorityColor(
@@ -65,7 +61,6 @@ export default function TaskList({ tasks, removeTask }) {
                 </span>
               </div>
 
-              {/* Buttons */}
               <div className="mt-auto flex flex-col gap-5">
                 <button
                   onClick={() => removeTask(task.id)}
